@@ -3,14 +3,7 @@
 import sys
 
 def print_msg(dict_sc, total_file_size):
-    """
-    Method to print status codes and total file size.
-    Args:
-        dict_sc: dict of status codes
-        total_file_size: total of the file
-    Returns:
-        Nothing
-    """
+    """Print the status codes and total file size."""
     print("File size: {}".format(total_file_size))
     for key in sorted(dict_sc.keys()):
         if dict_sc[key] > 0:
@@ -32,13 +25,13 @@ try:
     for line in sys.stdin:
         parsed_line = line.split()
         
-        # Expecting at least 3 elements (file size, status code)
-        if len(parsed_line) < 3:
+        # Expect at least 2 elements: file size and status code
+        if len(parsed_line) < 2:
             continue
 
         try:
-            file_size = int(parsed_line[0])  # file size
-            status_code = parsed_line[1]  # status code
+            file_size = int(parsed_line[0])  # First element is file size
+            status_code = parsed_line[1]      # Second element is status code
         except ValueError:
             continue  # Skip lines where conversion fails
 
